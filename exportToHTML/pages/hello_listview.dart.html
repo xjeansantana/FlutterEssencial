@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>hello_listview.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+hello_listview.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+
+class <span class="s0">HelloListView </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  @override
+  Widget build(BuildContext context) {
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      appBar: AppBar(
+        title: Text(<span class="s1">&quot;ListView&quot;</span><span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">body: _body()</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+  _body() {
+    <span class="s2">return </span><span class="s0">ListView(</span>
+      itemExtent: <span class="s3">350</span><span class="s2">,</span>
+      <span class="s0">children: &lt;Widget&gt;[</span>
+        _img(<span class="s1">&quot;assets/images/dog1.png&quot;</span><span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">_img(</span><span class="s1">&quot;assets/images/dog2.png&quot;</span><span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">_img(</span><span class="s1">&quot;assets/images/dog3.png&quot;</span><span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">_img(</span><span class="s1">&quot;assets/images/dog4.png&quot;</span><span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">_img(</span><span class="s1">&quot;assets/images/dog5.png&quot;</span><span class="s0">)</span>
+      ]<span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+  _img(String img) {
+    <span class="s2">return </span><span class="s0">Image.asset(</span>
+      img<span class="s2">,</span>
+      <span class="s0">fit: BoxFit.cover</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+}
+</pre>
+</body>
+</html>
