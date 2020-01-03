@@ -1,29 +1,64 @@
 import 'package:aula01/pages/hello_listview.dart';
-import 'package:aula01/pages/hello_page1.dart';
 import 'package:aula01/pages/hello_page2.dart';
 import 'package:aula01/pages/hello_page3.dart';
 import 'package:aula01/utils/nav.dart';
 import 'package:aula01/widgets/blue_button.dart';
+import 'package:aula01/widgets/drawer_list.dart.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello Flutter"),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Hello Flutter"),
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(
+                text: "Tab1",
+              ),
+              Tab(
+                text: "Tab2",
+              ),
+              Tab(
+                text: "Tab3",
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(children: [
+          _body(context),
+          Container(
+            color: Colors.green,
+          ),
+          Container(
+            color: Colors.yellow,
+          ),
+        ]),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            _onClickFab();
+          },
+        ),
+        drawer: DrawerList(),
       ),
-      body: _body(context),
     );
+  }
+
+  _onClickFab() {
+    print("Adicionar");
   }
 
   _body(context) {
     return Container(
+      padding: EdgeInsets.only(top: 16),
       color: Colors.white,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           _text(),
           _pageView(),
@@ -139,8 +174,7 @@ class HomePage extends StatelessWidget {
         timeInSecForIos: 5,
         backgroundColor: Colors.green,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   _img(String img) {
