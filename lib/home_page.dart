@@ -5,6 +5,7 @@ import 'package:aula01/pages/hello_page3.dart';
 import 'package:aula01/utils/nav.dart';
 import 'package:aula01/widgets/blue_button.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -69,7 +70,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 BlueButton("Snack", onPressed: () => _onClickSnack(context)),
-                BlueButton("Dialog", onPressed: _onClickDialog),
+                BlueButton("Dialog", onPressed: () => _onClickDialog(context)),
                 BlueButton("Toast", onPressed: _onClickToast)
               ],
             )
@@ -100,9 +101,47 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _onClickDialog() {}
+  _onClickDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return WillPopScope(
+          onWillPop: () async => false,
+          child: AlertDialog(
+            title: Text("Flutter é muito legal"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Cancelar"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              FlatButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.pop(context);
+                  print("OK !!!");
+                },
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
 
-  _onClickToast() {}
+  _onClickToast() {
+    Fluttertoast.showToast(
+        msg: "Flutter é muito legal",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 5,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
 
   _img(String img) {
     return Image.asset(
